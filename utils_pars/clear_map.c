@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars.c                                             :+:      :+:    :+:   */
+/*   clear_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zqouri <zqouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 23:22:10 by zqouri            #+#    #+#             */
-/*   Updated: 2024/12/22 23:22:10 by zqouri           ###   ########.fr       */
+/*   Created: 2024/12/23 00:01:34 by zqouri            #+#    #+#             */
+/*   Updated: 2024/12/23 00:01:34 by zqouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	init_map(char const *argv)
+void	clear_map(char *error, t_map *data)
 {
-	t_map	*data;
-
-	data = (t_map *)malloc(sizeof(t_map));
-	if (!data)
+	if (error)
+		ft_putstr_fd(error, 2);
+	if (data)
 	{
-		ft_putstr_fd("ERROR malloc\n", 2);
-		exit(1);
+		if (data->line)
+			free(data->line);
+		if (data->map)
+			ft_free(data->map);
 	}
-	data->name_map = argv[2];
-	data->line = NULL;
-	data->map = NULL;
-}
-
-void	pars(t_map *map)
-{
-	check_file(map);
+	exit(1);
 }

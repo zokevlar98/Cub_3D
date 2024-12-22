@@ -16,6 +16,7 @@ int main(int argc, char const *argv[])
 {
 	if (argc == 3)
 	{
+		init_map(argv)
 	}
 	else
 		return (printf("ERROR Invalid Argument\n"), 1);
